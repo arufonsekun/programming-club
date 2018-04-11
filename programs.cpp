@@ -60,12 +60,19 @@ void distancia(){
   Distancia = sqrt(Distancia);
   printf("%.4f\n",Distancia);
 }
+
+void carro(){
+  int km;
+  cin >> km;
+  printf("%d minutos\n", km * 2 );
+}
 int main(){
   //area_circulo();
   //area_esfera();
   //figuras();
   //maior();
   //consumo();
-  distancia();
+  //distancia();
+  carro();
   return 0;
 }
