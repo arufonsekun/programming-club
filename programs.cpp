@@ -60,12 +60,141 @@ void distancia(){
   Distancia = sqrt(Distancia);
   printf("%.4f\n",Distancia);
 }
+
+void fuelSpent(){
+  int speed;
+  int hours;
+  cin >> speed;
+  cin >> hours;
+  double consume = (speed * hours) / 12.0;
+  printf("%.3lf\n", consume);
+}
+
+void timeConversor(){
+  int seconds = 0;
+  int hours = 0;
+  int minutes = 0;
+  cin >> seconds;
+
+  if (seconds >= 3600){
+    hours = seconds / 3600;
+    seconds -= hours * 3600;
+  }
+  if (seconds >= 60){
+    minutes = seconds / 60;
+    seconds -= minutes * 60;
+  }
+
+  printf("%d:%d:%d \n", hours, minutes, seconds);
+}
+
+void ageDays() {
+  int days = 0;
+  int years = 0;
+  int month = 0;
+  cin >> days;
+  if (days >= 365){
+    years = days / 365;
+    days -= years * 365;
+  }
+  if (days >= 30){
+    month = days / 30;
+    days -= month * 30;
+  }
+  printf("%d ano(s)\n",years);
+  printf("%d mes(es)\n",month);
+  printf("%d dia(s)\n",days);
+}
+
+void selectionTest(){
+  int A, B, C, D;
+  cin >> A >> B >> C >> D;
+  if (B > C && D > A){
+    if ((A + B) < (C + D) && (A > 0 && C > 0 && D > 0)){
+      printf("Valores aceitos\n");
+    }
+    else{
+      printf("Valores nao aceitos\n");
+    }
+  }
+  else{
+    printf("Valores nao aceitos\n");
+  }
+}
+
+void baskara(){
+  float A,B,C;
+  cin >> A >> B >> C;
+  float R1;
+  float R2;
+  float delta;
+  delta = B * B + (-4.0 * A * C);
+  if (delta >= 0 && 2.0 * A != 0){
+    R1 = (-1.0 * B + sqrt(delta)) / (2.0 * A);
+    R2 = (-1.0 * B - sqrt(delta)) / (2.0 * A);
+    printf("R1 = %.5f\n", R1);
+    printf("R2 = %.5f\n", R2);
+  }
+  else{
+    printf("Impossivel calcular\n");
+  }
+
+}
+
+void interval(){
+  double input;
+  cin >> input;
+  if (input >= 0 && input <= 25){
+    cout << "Intervalo [0,25]\n";
+  }
+  if (input > 25 && input <= 50){
+    cout << "Intervalo (25,50]\n";
+  }
+  if(input > 50 && input <= 75){
+    cout << "Intervalo (50,75]\n";
+  }
+  if (input > 75 && input <= 100){
+    cout << "Intervalo (75,100]\n";
+  }
+  if(input > 100 || input < 0){
+    cout << "Fora de intervalo\n";
+  }
+}
+
+void sum(){
+  int A, B;
+   cin >> A >> B;
+   int X = A + B;
+   cout << "X = " << X << '\n';
+}
+
+void snack(){
+  int X, Y;
+  float total;
+  cin >> X >> Y;
+  if (X == 1){cout << "Entro";total = Y * 4.0;}
+  if (X == 2){total = Y * 4.5;}
+  if (X == 3){total = Y * 5.0;}
+  if (X == 4){total = Y * 2.0;}
+  if (X == 5){total = Y * 1.5;}
+  printf("Total: R$ %.2f\n", total);
+}
+
 int main(){
   //area_circulo();
   //area_esfera();
   //figuras();
   //maior();
   //consumo();
-  distancia();
+  //distancia();
+  //fuelSpent();
+  //banknotes();
+  //timeConversor();
+  //ageDays();
+  //selectionTest();
+  //baskara();
+  //interval();
+  //sum();
+  snack();
   return 0;
 }
