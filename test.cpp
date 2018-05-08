@@ -95,6 +95,36 @@ void bankCoins(){
   printf("%d moeda(s) de R$ 0.01\n",coin);
 }
 
+void tomada(){
+    int a, b, c, d, sockets;
+    cin >> a >> b >> c >> d;
+
+    if (a == 3) sockets = b + c + d;
+    if (b == 3) sockets = a + c + d;
+    if (c == 3)sockets = a + b + d;
+    else sockets = a + b + c;
+    sockets = (a -1 + b - 1 + c - 1 + d);
+    cout << sockets << '\n';
+}
+
+void manhattan_distance(){
+    int x1, y1, x2, y2, distance;
+    cin >> x1 >> y1 >> x2 >> y2;
+    distance = abs(x1 - x2) + abs(y1 - y2);
+    cout << distance << endl;
+}
+
+void granpa_sale(){
+    int days, sale, total, deposit;
+    cin >> days >> sale;
+    sale = total;
+    for(int i; i < days; i++){
+        cin >> deposit;
+        sale += deposit;
+    }
+}
+
+
 int main(){
   bankCoins();
   return 0;
