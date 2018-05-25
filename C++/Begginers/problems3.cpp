@@ -1,10 +1,8 @@
 #include <iostream>
 #include <stdio.h>
-#include <math.h>
-#include <vector>
 using namespace std;
 
-/*void experiment(){
+void experiment(){
   int cases = 0, rat = 0, frog = 0, habbit = 0, total = 0, entry = 0;
   char type = ' ';
   cin >> cases;
@@ -26,7 +24,7 @@ using namespace std;
   printf("Percentual de coelhos: %.2f %\n", perC);
   printf("Percentual de ratos: %.2f %\n", perR);
   printf("Percentual de sapos: %.2f %\n", perS);
-}*/
+}
 
 void sequenceIJ1(){
   int i = 1, j = 60;
@@ -71,7 +69,7 @@ void sequenceIJ4(){
   int aux = 0;
   while(i <= 2.2){
     aux = (int)i;
-    if (i - aux == 0 || aux == 2){
+    if (i - aux == 0 & i - aux == 0.0){
       printf("I=%d J=%d\n", aux,1+aux);
       printf("I=%d J=%d\n", aux,2+aux);
       printf("I=%d J=%d\n", aux,3+aux);
@@ -90,6 +88,6 @@ int main() {
   //sequenceIJ1();
   //sequenceIJ2();
   //sequenceIJ3();
-  //sequenceIJ4();
+  sequenceIJ4();
   return 0;
 }
