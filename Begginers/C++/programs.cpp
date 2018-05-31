@@ -61,7 +61,7 @@ void distancia(){
   printf("%.4f\n",Distancia);
 }
 
-<<<<<<< HEAD
+
 void fuelSpent(){
   int speed;
   int hours;
@@ -181,13 +181,13 @@ void snack(){
   printf("Total: R$ %.2f\n", total);
 }
 
-=======
+
 void carro(){
   int km;
   cin >> km;
   printf("%d minutos\n", km * 2 );
 }
->>>>>>> 8141287a73f1df06df2560e29f87d82da39acc3a
+
 int main(){
   //area_circulo();
   //area_esfera();
@@ -195,7 +195,6 @@ int main(){
   //maior();
   //consumo();
   //distancia();
-<<<<<<< HEAD
   //fuelSpent();
   //banknotes();
   //timeConversor();
@@ -205,8 +204,6 @@ int main(){
   //interval();
   //sum();
   snack();
-=======
   carro();
->>>>>>> 8141287a73f1df06df2560e29f87d82da39acc3a
   return 0;
 }

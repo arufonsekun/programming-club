@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <cmath>
 using namespace std;
 
 void experiment(){
@@ -83,11 +84,85 @@ void sequenceIJ4(){
   }
 }
 
+void fuel_type(){
+  int input = 8;
+  int alc = 0, gas = 0, die = 0;
+  while(input != 4){
+    cin >> input;
+    if (input == 1) alc++;
+    if (input == 2) gas++;
+    if (input == 3) die++; 
+  }
+  printf("MUITO OBRIGADO\n");
+  printf("Alcool: %d\n", alc);
+  printf("Gasolina: %d\n", gas);
+  printf("Diesel: %d\n", die);
+}
+
+void PUM(){
+  int rows;
+  cin >> rows;
+  for (int i = 1; i < (rows*3)+rows; i++){
+    if (i % 4 == 0){
+      printf("PUM\n");
+      i++;
+    }    
+    cout << i << ' ';
+  }
+  printf("PUM\n");
+}
+
+void square_cubic(){
+  int x;
+  cin >> x;
+  for (int i = 1; i <= x; i++){
+    cout << i << ' ' << pow(i,2) << ' ' << pow(i,3) << '\n'; 
+  }
+}
+
+void logic_sequence(){
+  int x;
+  int square = 0, cubic = 0, step = 0;
+  cin >> x;
+  for(int i = 1; i <= x;){
+      if(step == 0){
+        square = pow(i, 2);
+        cubic = pow(i, 3);
+        cout << i << ' ' << square << ' ' << cubic << '\n';
+        step = 1;
+      }
+      if (step == 1){
+        cout << i << ' ' << square+1 << ' ' << cubic+1 << '\n';
+        step = 0;
+        i++;
+      }
+  }
+}
+
+void logic_sequence2(){
+  int x,y;
+  cin >> x >> y;
+  for (int i = 1; i <= y; i++){
+    cout << i;
+    if (i % x == 0){
+      printf("\n");
+    }
+    else {
+      cout << ' ';
+    }
+  }
+}
+
 int main() {
   //experiment();
   //sequenceIJ1();
   //sequenceIJ2();
   //sequenceIJ3();
-  sequenceIJ4();
+  //sequenceIJ4();
+  //fuel_type();
+  //PUM();
+  //square_cubic();
+  //logic_sequence();
+  logic_sequence2();
   return 0;
 }
