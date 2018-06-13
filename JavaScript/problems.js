@@ -1,4 +1,4 @@
-var input = require('fs').readFileSync('input.txt', 'utf8');
+var input = require('fs').readFileSync('num.txt', 'utf8');
 var lines = input.split('\n');
 function fillArray(){
   var num = [parseInt(lines[0])];
@@ -39,6 +39,17 @@ function changeArray(lines){
     index ++;
   }
 }
+
+function average(lines){
+	lines.pop();
+	var aveRage = 1;
+	for (var e of lines){
+		aveRage *= parseFloat(e);
+		//console.log(aveRage);
+	}
+	console.log(aveRage/12.0);
+}
 //fillArray(lines);
 //arraySelection(lines);
-changeArray(lines);
+//changeArray(lines);
+average(lines);
