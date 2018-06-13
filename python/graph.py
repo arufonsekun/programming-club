@@ -10,10 +10,12 @@ class Graph(object):
 
 
     def addNode(self):
+        inf = 0
         graph = []
         node = []
         for _ in range(self.edge):
             v1, v2, w = map(int, input().split())
+            inf += w
             if v1 not in self.nodes:
                 node.append(Node(v1))
                 self.nodes.append(v1)
@@ -21,8 +23,13 @@ class Graph(object):
                 node.append(Node(v2))
                 self.nodes.append(v2)
             graph.append([v1,v2,w])
+        re = int(input("Digite o vertice de referencia: "))
 
         for e in node:
+            if e.value == re:
+                e.distance = 0
+            else:
+                e.distance = inf
             for el in graph:
                 if el[0] == e.value:
                     e.connections.append(node[self.nodes.index(el[1])])
@@ -36,8 +43,11 @@ class Graph(object):
         for e in self.nodeObjects:
             i = 0
             for el in e.connections:
-                print(e.value,'-----',e.weight[i],'-----',el.value)
+                print(e.value,'---',e.weight[i],'---',el.value)
                 i += 1
+
+    #def path(self)
+
 
 
 class Node(object):
@@ -47,7 +57,7 @@ class Node(object):
         self.weight = []
         self.distance = 0
 
-#graph = Graph(6,9)
-graph = Graph(3,3)
+x, y = map(int, input("Digite o numero de vertices e arestas: ").split())
+graph = Graph(x, y)
 graph.addNode()
 graph.show()
