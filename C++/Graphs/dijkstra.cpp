@@ -20,9 +20,20 @@ void show_graph(){
 }
 
 void show_distances(){
+	int biggest = 0;
 	for (int i = 0; i < v; i++){
-		cout << distances[i] << endl;
+		if (distances[i] > biggest){
+			biggest = distances[i];
+		}
 	}
+	cout << "Maior distancia: " << biggest << endl;
+	for (int e = 0; e < v; e++){
+		//distances[i] != 0 because of the reference (main_vertex) vertex
+		if (distances[e] < biggest && distances[e] != 0){
+			biggest = distances[e];
+		}
+	}
+	cout << "Menor distancia: " << biggest << endl;
 }
 
 void dijkstra(int vertex, int count){
@@ -53,6 +64,7 @@ int main(){
 	graph.resize(a+1);
 	weight.resize(a+1);
 	
+	//inputs the edges
 	for (int i = 0; i < a; i++){
 		cin >> v1 >> v2 >> w;
 		graph[v1].push_back(v2);
@@ -61,6 +73,7 @@ int main(){
 		weight[v2].push_back(w);
 	}
 
+	//set the distances
 	for (int e = 0; e < v; ++e){
 		distances.push_back(INF);
 	}

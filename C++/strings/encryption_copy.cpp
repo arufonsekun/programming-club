@@ -10,7 +10,7 @@ string shiftRight(string message){
   char letter = ' ';
   for (int i = 0; i < message.size(); i++){
     letter = message[i];
-    if ((letter >= 'a' & letter <= 'z') || (letter >= 'A' & letter <= 'Z')){
+    if ((letter >= 'a' & letter <= 'z') | (letter >= 'A' & letter <= 'Z')){
       letter += 3;
     }
     out << letter;
