@@ -6,4 +6,5 @@
   <li><a href = "https://github.com/Junior-16/ProgrammingClub/tree/master/C%2B%2B/Begginers">Begginers</a></li>
   <li><a href = "https://github.com/Junior-16/ProgrammingClub/tree/master/C%2B%2B/Graphs">Graphs</a></li>
   <li><a href = "https://github.com/Junior-16/ProgrammingClub/tree/master/C%2B%2B/strings">Strings</a></li>
+  <li><a href = "https://github.com/Junior-16/ProgrammingClub/tree/master/C%2B%2B/mathematics">Mathematics</a></li>
 </ol> 
