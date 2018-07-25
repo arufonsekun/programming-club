@@ -18,8 +18,8 @@ map<int, char> decValues = {
 	{8, '8'},{9, '9'},{10, 'a'},{11, 'b'},{12, 'c'},{13, 'd'},{14, 'e'},{15, 'f'}
 };
 
-unsigned long int hex2Dec(string input){
-	unsigned long int output = 0;
+long int hex2Dec(string input){
+	long int output = 0;
 	if (input.size() == 1){
 		output = hexValues.at(input[0]);
 	}
@@ -36,7 +36,7 @@ unsigned long int hex2Dec(string input){
 	return output;
 }
 
-void dec2Hex(unsigned long int input){
+void dec2Hex(long int input){
 	vector<int> positions;
 	unsigned int rest, quocient = input;
 
@@ -54,7 +54,7 @@ void dec2Hex(unsigned long int input){
 
 }
 
-void dec2Bin(unsigned long int input){
+void dec2Bin(long int input){
 	vector<unsigned short int> binary;
 	unsigned int rest;
 	unsigned long int quocient = input;
@@ -71,29 +71,31 @@ void dec2Bin(unsigned long int input){
 	cout << " bin" << endl;
 }
 
-unsigned long int bin2Dec(string input){
+long int bin2Dec(string input){
 	unsigned long int output = 0;
-	unsigned short int counter = 0;
+	int counter = 0;
 	for (int i = input.size()-1; i >= 0; i--){
 		if(input.at(i) == '1'){
 			output += pow(2, counter);
 		}
 		counter++;
 	}
-	cout << output << " dec" << endl;
 	return output;
 
 }
 
 int main(){
 	unsigned cases;
+	long int decOutPut = 0;
 	string input, base;
 	cin >> cases;
 	for (unsigned int i = 0; i < cases; ++i){
 		cin >> input >> base;
 		printf("Case %d:\n", i+1);
 		if(base == "bin"){
-			dec2Hex( bin2Dec(input) );
+			decOutPut = bin2Dec(input);
+			cout << decOutPut << " dec" << endl;
+			dec2Hex( decOutPut );
 		}
 
 		else if (base == "hex"){
