@@ -74,8 +74,8 @@ int main(){
 			cin >> v1;
 			cin >> v2;
 			//cout << v1 << v2 << endl;
-			graph[v2 - 'a'].push_back(v1 - 'a');
-			graph[v1 - 'a'].push_back(v2 - 'a');
+			graph[v2 - 'a'].push_back(v1);
+			graph[v1 - 'a'].push_back(v2);
 			//printf("%d", v2 - 'a');
 			//printf("%d\n", v2-97);
 			//printf("%c\n", graph[v2 - 97][0] +'a');
