@@ -5,8 +5,7 @@ using namespace std;
 
 int main(){
 	char str[5];
-	string br = "junior";
-	strcat(str, &br[0]);
-	cout << str << endl;
+
+	cout << strlen(str) << endl;
 	return 0;
 }

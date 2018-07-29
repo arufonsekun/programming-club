@@ -12,7 +12,7 @@ vector<vector<int>> weight;
 int v,a;
 
 void show_graph(){
-	for (int i = 0; i < v; i++){
+	for (int i = 0; i < graph.size(); i++){
 		for(int e = 0; e < graph[i].size(); ++e){
 			cout << i << "-> V:" << graph[i][e] << " W:" << weight[i][e] << endl; 
 		}
@@ -20,20 +20,22 @@ void show_graph(){
 }
 
 void show_distances(){
-	int biggest = 0;
+	int biggest = 0, smaller;
+
 	for (int i = 0; i < v; i++){
 		if (distances[i] > biggest){
 			biggest = distances[i];
 		}
 	}
-	cout << "Maior distancia: " << biggest << endl;
+
+	smaller = biggest;
+
 	for (int e = 0; e < v; e++){
-		//distances[i] != 0 because of the reference (main_vertex) vertex
-		if (distances[e] < biggest && distances[e] != 0){
-			biggest = distances[e];
+		if (distances[e] < smaller && distances[e] != 0){
+			smaller = distances[e];
 		}
 	}
-	cout << "Menor distancia: " << biggest << endl;
+	cout << biggest - smaller << endl;
 }
 
 void dijkstra(int vertex, int count){
@@ -42,8 +44,9 @@ void dijkstra(int vertex, int count){
 			distances[graph[vertex][i]-1] = weight[vertex][i] + distances[vertex-1];
 		}
 	}
-	if (count < v){
-		if (vertex == v){
+
+	if (count <= graph.size()){
+		if (vertex == graph.size() -1){
 			dijkstra(0, count+1);
 		}
 		else{
@@ -61,8 +64,8 @@ int main(){
 
 	cin >> v >> a;
 
-	graph.resize(a+1);
-	weight.resize(a+1);
+	graph.resize(a+2);
+	weight.resize(a+2);
 	
 	//inputs the edges
 	for (int i = 0; i < a; i++){
@@ -81,8 +84,6 @@ int main(){
 	cin >> main_vertex;
 	//set the reference vertex with distance 0
 	distances[main_vertex-1] = 0;
-	//show_graph();
 	dijkstra(main_vertex, 0);
-
 	return 0;
 }

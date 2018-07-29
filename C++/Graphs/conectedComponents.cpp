@@ -8,6 +8,7 @@ using namespace std;
 vector<int> graph[26];
 array<unsigned int, 26> visited;
 array<unsigned int, 26> visitedCache;
+array<unsigned int, 26> otherVisitedCache;
 
 void clearGraph(){
 	for (unsigned int x = 0; x < 26; x++){
@@ -19,6 +20,7 @@ void fillVisited(){
 	for (unsigned int i = 0; i < 26; i++){
 		visited.at(i) = 0;
 		visitedCache.at(i) = 0;
+		otherVisitedCache.at(i) = 0;
 	}
 }
 
@@ -30,16 +32,31 @@ void printVisited(){
 }
 
 void updateVisitedCache(){
-	char output;
 	for (unsigned int i = 0; i < 26; i++){
 		if(visited.at(i) == 1){
+			visitedCache.at(i) = 1;
+		}
+	}
+}
+
+void printChars(){
+	char output;
+
+	for (unsigned int i = 0; i < 26; i++){
+		if(otherVisitedCache.at(i) == 1){
 			output = i + 97;
 			printf("%c,", output);
-			visitedCache.at(i) = 1;
 		}
 	}
 
 	cout << endl;
+	
+}
+
+void clearOtherVisitedCache(){
+	for (unsigned int i = 0; i < 26; i++){
+		otherVisitedCache[i] = 0;
+	}
 }
 
 unsigned int dfs(unsigned int index){
@@ -47,6 +64,7 @@ unsigned int dfs(unsigned int index){
 
 		if (visited.at( graph[index].at(i) ) == 0){
 			visited.at( graph[index].at(i) ) = 1;
+			otherVisitedCache.at( graph[index].at(i) ) = 1;
 			return dfs( graph[index].at(i) );
 
 		}
@@ -76,22 +94,31 @@ int main(){
 			graph[v2 - 'a'].push_back(v1 - 'a');
 		}
 
-		visited.at(0) = 1;
-		dfs(0);
-		printVisited();
+		/*dfs(0);
+		printVisited();*/
 
-		/*cout << "Case #" << i+1 << endl;
+		cout << "Case #" << i+1 << endl;
 		for(unsigned int v = 0; v < E; v++){
-			if (visitedCache.at(v) == 0 & graph[graph[v].at(0)].size() != 1){
+			if (E == 1){
 				components++;
-				visited.at(v) = 1;
 				dfs(v);
-				printVisited();
+				//printVisited();
 				updateVisitedCache();
+				printChars();
+				clearOtherVisitedCache();
+			}
+
+			else if (visitedCache.at(v) == 0 & graph[v].size() != 1){
+				components++;
+				dfs(v);
+				//printVisited();
+				updateVisitedCache();
+				printChars();
+				clearOtherVisitedCache();
 			}
 			
 		}
-		cout << components << " components connected" << endl;*/
+		cout << components << " components connected" << endl << endl;
 	}
 
 	return 0;
