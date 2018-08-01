@@ -4,14 +4,14 @@ using namespace std;
 
 int main(){
   char operation;
-  float matrix[12][12];
-  float sum = 0.0;
-  float denominator = 0.0;
+  double matrix[12][12];
+  double sum = 0.0;
+  double denominator = 0.0;
 
-  unsigned short int i = 0, j = 0;
-  unsigned short int counter = 1;
+  int i = 0, j = 0;
+  int counter = 1;
   cin >> operation;
-  for (unsigned short int e = 0; e < 144; e++){
+  for (int e = 0; e < 144; e++){
     cin >> matrix[i][j];
     if (j >= counter & j <= (11 - counter) & i < 5){
       sum += matrix[i][j];
@@ -27,10 +27,10 @@ int main(){
     }
   }
   if (operation == 'S') {
-    printf("%.1f\n", sum);
+    printf("%.1lf\n", sum);
   }
   else {
-    printf("%.1f\n", sum/denominator);
+    printf("%.1lf\n", sum/denominator);
   }
   return 0;
 }
