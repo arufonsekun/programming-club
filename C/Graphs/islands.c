@@ -49,18 +49,20 @@ int main(){
     memset(distances, 1001, 1001);
     distances[mainIsland -1] = 0;
     dijkstra(mainIsland -1, 0);
-    /*mostrar o pseudo-grafo
-    for (unsigned int i = 0; i < islands; i++){
-        for (unsigned int j = 0; j < size(weights[i]); j++){
-            printf("%u ", weights[i][j]);
-        }
-        printf("\n");
-    }*/
 
+    unsigned int biggest = 0, smaller = 0;
     for (unsigned int i = 0; i < islands; i++){
-        printf("%u ", distances[i]);
+       if (distances[i] > biggest){
+         biggest = distances[i];
+       }
     }
-    printf("\n");
+    smaller = biggest;
+    for (unsigned int i = 0; i < islands; i++){
+        if (distances[i] < smaller & distances[i] != 0){
+            smaller = distances[i];
+        }
+    }
+    printf("%u\n", biggest - smaller);
 
     return 0;
 }

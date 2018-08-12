@@ -1,2 +1,4 @@
-10
-1 1 1 1 1 1 1 1 1 1
+probleme := 1945
+debuguer := 1
+output := 7
+status := debuguer + output
