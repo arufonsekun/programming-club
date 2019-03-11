@@ -10,65 +10,57 @@ int min(pair<int, int> pairr){
 }
 
 int max(pair<int, int> pairr){
-    return (pairr.first > pairr.second ? pairr.first : pairr.second);
+    return (pairr.first >= pairr.second ? pairr.first : pairr.second);
+}
+
+int maxVal(int i, int j){
+    return (i > j ? i : j);
+}
+
+int minVal(int i, int j){
+    return (i < j ? i : j);
 }
 
 int main(){
+    int c, l;
     pair <int, int> d;
     pair <int, int> v;
     pair<int, int> output;
 
-    cin >> d.first >> d.second;
-    cin >> v.first >> v.second;
-
-    //menores dimensoes
-    int sD = min(d);
-    int sV = min(v);
-
-    //quem tem maior area
-    int aD = d.first*d.second;
-    int aV = v.first*v.second;
-    char sA = (aD <= aV ? 'd' : 'v');
-
-    //se os quadrados com menores dimensoes sao iguais
-    if (sD == sV){
-        if (v.first < d.second and v.second <= d.first){
-            if (aV > aD){
-                output.first = v.first + sD;
-                output.second = v.second + max(d);
-                cout << pow(min(output), 2) << endl;
-            }
-            else if (aV < aD){
-                output.first = d.first + sV;
-                output.second = d.second + max(v);
-                cout << pow(min(output), 2) << endl;
-            }
-            else{
-                cout << pow(sD, 2) << endl;
-            }
+    for (int i = 0; i <= 1; i++){
+        cin >> l >> c;
+        if(!i){
+            d.first = minVal(l, c);
+            d.second = maxVal(l, c);
         }
         else{
-            cout << (sA == 'd' ? pow(max(d), 2) : pow(max(v), 2)) << endl;
-            cout << "Hu3" << endl;
+            v.first = minVal(l, c);
+            v.second = maxVal(l, c);
         }
+
     }
 
+    int sum = d.first + v.first;
+    if (d.second >= sum and v.second >= sum){
+        cout << pow(sum, 2) << endl;
+    }
     else{
-        if(sD < sV){
-            if (aV > pow(sD, 2)){
-                output.first = sD + (v.first - sD);
-                output.second = sD + (v.second - sD);
-                cout << pow(min(output), 2) << endl;
+        char minMax = (d.first > v.first ? 'd' : 'v');
+        if (minMax == 'd'){
+            if(v.second > d.first){
+                cout << pow(d.first + 1, 2) << endl;
             }
-            else cout << pow(sD, 2) << endl;
+            else{
+                cout << pow(d.first, 2) << endl;
+            }
         }
         else{
-            if (aD > pow(sV, 2)){
-                output.first = sV + (d.first - sV);
-                output.second = sV + (d.second - sV);
-                cout << pow(min(output), 2) << endl;
+            if(d.second > v.first){
+                cout << pow(v.first + 1, 2) << endl;
             }
-            else cout << pow(sV, 2) << endl;
+            else{
+                cout << pow(v.first, 2) << endl;
+            }
         }
     }
 
