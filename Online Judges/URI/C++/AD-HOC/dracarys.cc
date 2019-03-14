@@ -5,19 +5,19 @@
 
 using namespace std;
 
-int min(pair<int, int> pairr){
-    return (pairr.first < pairr.second ? pairr.first : pairr.second);
+inline pair<int, int> min(pair<int, int> p1, pair<int, int> p2){
+    return (p1.first < p2.first ? p1 : p2);
 }
 
-int max(pair<int, int> pairr){
-    return (pairr.first >= pairr.second ? pairr.first : pairr.second);
+inline pair<int, int> maxSecond(pair<int, int> p1, pair<int, int> p2){
+    return (p1.second > p2.second ? p1 : p2);
 }
 
-int maxVal(int i, int j){
+inline int maxVal(int i, int j){
     return (i > j ? i : j);
 }
 
-int minVal(int i, int j){
+inline int minVal(int i, int j){
     return (i < j ? i : j);
 }
 
@@ -25,7 +25,6 @@ int main(){
     int c, l;
     pair <int, int> d;
     pair <int, int> v;
-    pair<int, int> output;
 
     for (int i = 0; i <= 1; i++){
         cin >> l >> c;
@@ -37,30 +36,23 @@ int main(){
             v.first = minVal(l, c);
             v.second = maxVal(l, c);
         }
-
     }
 
-    int sum = d.first + v.first;
-    if (d.second >= sum and v.second >= sum){
-        cout << pow(sum, 2) << endl;
+    long long int output = 0;
+    //se eu n conseguir "encaixar" os retangulos
+    if (maxSecond(d, v).first > min(d, v).second){
+        output = pow(maxVal(d.first, v.first), 2);
+        cout << output << endl;
     }
     else{
-        char minMax = (d.first > v.first ? 'd' : 'v');
-        if (minMax == 'd'){
-            if(v.second > d.first){
-                cout << pow(d.first + 1, 2) << endl;
-            }
-            else{
-                cout << pow(d.first, 2) << endl;
-            }
+        int sum = d.first + v.first;
+        if (d.second >= sum and v.second >= sum){
+            output = pow(sum, 2);
+            cout << output << endl;
         }
         else{
-            if(d.second > v.first){
-                cout << pow(v.first + 1, 2) << endl;
-            }
-            else{
-                cout << pow(v.first, 2) << endl;
-            }
+            output = pow(minVal(d.second, v.second), 2);
+            cout << output << endl;
         }
     }
 
