@@ -1,7 +1,7 @@
 import sys
 
 def solve(i, j):
-    if (i == n-2):
+    if (i == n-1):
         return soma + pyramid[i][j]
     if(j == 0):
         return pyramid[i][j] + solve(i+1, j) + solve(i+1, j+1)
