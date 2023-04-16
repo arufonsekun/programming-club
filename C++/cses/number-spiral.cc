@@ -10,20 +10,19 @@ long long solve(long long r, long long c) {
     if ((mx % 2) == 0) {
         if (c == 1) {
             return mx * mx;
-        } else if (r < mx) {
+        }
+        if (r < mx) {
             return solve(mx, mx) - (mx - r);
-        } else {
-            return (mx*mx - (c-1));
         }
-    } else {
-        if (r == 1) {
-            return mx * mx;
-        } else if (c < mx) {
-            return solve(mx, mx) - (mx - c);
-        } else {
-            return (mx*mx - (r-1)); 
-        }
+        return (mx*mx - (c-1));
     }
+    if (r == 1) {
+        return mx * mx;
+    }
+    if (c < mx) {
+        return solve(mx, mx) - (mx - c);
+    }
+    return (mx*mx - (r-1)); 
 }
 
 int main() {
